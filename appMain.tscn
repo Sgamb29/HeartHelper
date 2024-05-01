@@ -1,0 +1,132 @@
+[gd_scene load_steps=6 format=3 uid="uid://dttuxusr0fe0c"]
+
+[ext_resource type="PackedScene" uid="uid://dq5qkmgysrcuf" path="res://mainPanel.tscn" id="1_jche8"]
+[ext_resource type="PackedScene" uid="uid://doq4x513ik654" path="res://mainLabel.tscn" id="2_0udsu"]
+[ext_resource type="Script" path="res://appMain.gd" id="2_bcv7y"]
+[ext_resource type="PackedScene" uid="uid://co1djkx0newg" path="res://mainButton.tscn" id="3_wwv8u"]
+[ext_resource type="PackedScene" uid="uid://p0t0vbm01ayx" path="res://elementCard.tscn" id="4_8e7gp"]
+
+[node name="Control" instance=ExtResource("1_jche8")]
+script = ExtResource("2_bcv7y")
+
+[node name="Label" parent="Base/marginBase/mainRows" index="0" instance=ExtResource("2_0udsu")]
+layout_mode = 2
+text = "Heart Healthy Sidekick"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Base/marginBase/mainRows" index="1"]
+layout_mode = 2
+
+[node name="ButtonInfo" parent="Base/marginBase/mainRows/HBoxContainer" index="0" instance=ExtResource("3_wwv8u")]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Theme"
+
+[node name="darkBtn" parent="Base/marginBase/mainRows/HBoxContainer" index="1" instance=ExtResource("3_wwv8u")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Dark"
+
+[node name="lightBtn" parent="Base/marginBase/mainRows/HBoxContainer" index="2" instance=ExtResource("3_wwv8u")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Light"
+
+[node name="blueBtn" parent="Base/marginBase/mainRows/HBoxContainer" index="3" instance=ExtResource("3_wwv8u")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Blue
+"
+
+[node name="tipsLabel" parent="Base/marginBase/mainRows" index="2" instance=ExtResource("2_0udsu")]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Tips: Press the save button after changing any trackers.
+Subtract by adding negative numbers."
+
+[node name="VBoxContainer" parent="Base/marginBase/mainRows/ScrollContainer" index="0"]
+theme_override_constants/separation = 40
+
+[node name="sodiumCard" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" index="0" groups=["trackers"] instance=ExtResource("4_8e7gp")]
+layout_mode = 2
+stat = "sodium"
+
+[node name="LabelName" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/sodiumCard" index="0"]
+text = "Sodium"
+
+[node name="fruitCard" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" index="1" groups=["trackers"] instance=ExtResource("4_8e7gp")]
+layout_mode = 2
+stat = "fruits"
+
+[node name="LabelName" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/fruitCard" index="0"]
+text = "Fruits"
+
+[node name="veggieCard" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" index="2" groups=["trackers"] instance=ExtResource("4_8e7gp")]
+layout_mode = 2
+stat = "veggies"
+
+[node name="LabelName" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/veggieCard" index="0"]
+text = "Veggies
+"
+
+[node name="grainsCard" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" index="3" groups=["trackers"] instance=ExtResource("4_8e7gp")]
+layout_mode = 2
+stat = "grains"
+
+[node name="LabelName" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/grainsCard" index="0"]
+text = "Grains"
+
+[node name="exerciseCard" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" index="4" groups=["trackers"] instance=ExtResource("4_8e7gp")]
+layout_mode = 2
+stat = "exercise"
+
+[node name="LabelName" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/exerciseCard" index="0"]
+text = "Exercise (Mins)"
+
+[node name="OptionBtn" parent="Base/marginBase/mainRows" index="4" instance=ExtResource("3_wwv8u")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Customize Trackers"
+
+[node name="footerCols" type="HBoxContainer" parent="Base/marginBase/mainRows" index="5"]
+layout_mode = 2
+theme_override_constants/separation = 143
+
+[node name="ResetBtn" parent="Base/marginBase/mainRows/footerCols" index="0" instance=ExtResource("3_wwv8u")]
+layout_mode = 2
+text = "Reset
+"
+
+[node name="GoToLogBtn" parent="Base/marginBase/mainRows/footerCols" index="1" instance=ExtResource("3_wwv8u")]
+layout_mode = 2
+text = "BP-Log"
+
+[node name="SaveBtn" parent="Base/marginBase/mainRows/footerCols" index="2" instance=ExtResource("3_wwv8u")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Save
+"
+
+[connection signal="pressed" from="Base/marginBase/mainRows/HBoxContainer/ButtonInfo" to="." method="_on_button_info_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/HBoxContainer/darkBtn" to="." method="_on_dark_btn_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/HBoxContainer/lightBtn" to="." method="_on_light_btn_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/HBoxContainer/blueBtn" to="." method="_on_blue_btn_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/sodiumCard/addBtn" to="." method="_on_add_btn_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/fruitCard/addBtn" to="." method="_on_add_btn_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/veggieCard/addBtn" to="." method="_on_add_btn_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/grainsCard/addBtn" to="." method="_on_add_btn_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/exerciseCard/addBtn" to="." method="_on_add_btn_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/OptionBtn" to="." method="_on_option_btn_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/footerCols/ResetBtn" to="." method="_on_reset_btn_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/footerCols/GoToLogBtn" to="." method="_on_go_to_log_btn_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/footerCols/SaveBtn" to="." method="_on_save_btn_pressed"]
+
+[editable path="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/sodiumCard"]
+[editable path="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/sodiumCard/addBtn"]
+[editable path="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/fruitCard"]
+[editable path="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/veggieCard"]
+[editable path="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/grainsCard"]
+[editable path="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/exerciseCard"]

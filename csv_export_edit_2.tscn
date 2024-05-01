@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2sioccubdbnv"]
+
+[ext_resource type="Script" path="res://csv-export-edit.gd" id="1_1qb5k"]
+[ext_resource type="PackedScene" uid="uid://co1djkx0newg" path="res://mainButton.tscn" id="2_adeiv"]
+
+[node name="csvExportEdit2" type="TextEdit"]
+offset_right = 8.0
+offset_bottom = 8.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 25
+script = ExtResource("1_1qb5k")
+
+[node name="copyBtn" parent="." instance=ExtResource("2_adeiv")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -418.0
+offset_top = -62.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+text = "Copy To ClipBoard"
+
+[connection signal="pressed" from="copyBtn" to="." method="_on_copy_btn_pressed"]

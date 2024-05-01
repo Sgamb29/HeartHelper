@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://p0t0vbm01ayx"]
+
+[ext_resource type="PackedScene" uid="uid://doq4x513ik654" path="res://mainLabel.tscn" id="1_bc515"]
+[ext_resource type="Script" path="res://elementCard.gd" id="1_xr0cd"]
+[ext_resource type="PackedScene" uid="uid://bivspu2x2b1fv" path="res://mainLine_edit.tscn" id="2_s7yly"]
+[ext_resource type="PackedScene" uid="uid://co1djkx0newg" path="res://mainButton.tscn" id="3_6gj3i"]
+
+[node name="elementCard" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+script = ExtResource("1_xr0cd")
+
+[node name="LabelName" parent="." instance=ExtResource("1_bc515")]
+layout_mode = 2
+text = "Element"
+
+[node name="LabelOutput" parent="." instance=ExtResource("1_bc515")]
+layout_mode = 2
+text = "Output"
+
+[node name="InputSubject" parent="." instance=ExtResource("2_s7yly")]
+layout_mode = 2
+
+[node name="addBtn" parent="." instance=ExtResource("3_6gj3i")]
+layout_mode = 2
+text = " Add "
+
+[connection signal="pressed" from="addBtn" to="." method="_on_add_btn_pressed"]

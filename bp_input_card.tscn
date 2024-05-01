@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://dybyc6f65d64r"]
+
+[ext_resource type="Script" path="res://bp_input_card.gd" id="1_1d87b"]
+[ext_resource type="PackedScene" uid="uid://doq4x513ik654" path="res://mainLabel.tscn" id="1_3pnnk"]
+[ext_resource type="PackedScene" uid="uid://bivspu2x2b1fv" path="res://mainLine_edit.tscn" id="2_4vqw8"]
+[ext_resource type="PackedScene" uid="uid://co1djkx0newg" path="res://mainButton.tscn" id="4_4wrj3"]
+
+[node name="BpInputCard" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+script = ExtResource("1_1d87b")
+
+[node name="DateInp" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="dateLbl" parent="DateInp" instance=ExtResource("1_3pnnk")]
+layout_mode = 2
+text = "Date"
+
+[node name="dateLineEdit" parent="DateInp" instance=ExtResource("2_4vqw8")]
+layout_mode = 2
+size_flags_horizontal = 3
+max_length = 11
+
+[node name="timeInp" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="timeLbl" parent="timeInp" instance=ExtResource("1_3pnnk")]
+layout_mode = 2
+text = "Time"
+
+[node name="timeLineEdit" parent="timeInp" instance=ExtResource("2_4vqw8")]
+layout_mode = 2
+size_flags_horizontal = 3
+max_length = 6
+
+[node name="TopNumInput" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="sysLbl" parent="TopNumInput" instance=ExtResource("1_3pnnk")]
+layout_mode = 2
+text = "Top Num (Sys)"
+
+[node name="sysEdit" parent="TopNumInput" instance=ExtResource("2_4vqw8")]
+layout_mode = 2
+
+[node name="BtmNumInput2" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="diaLbl" parent="BtmNumInput2" instance=ExtResource("1_3pnnk")]
+layout_mode = 2
+text = "Bottom Num (Dia)"
+
+[node name="diaEdit" parent="BtmNumInput2" instance=ExtResource("2_4vqw8")]
+layout_mode = 2
+
+[node name="heartRateInput" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="hrLbl" parent="heartRateInput" instance=ExtResource("1_3pnnk")]
+layout_mode = 2
+text = "Heart Rate"
+
+[node name="hrEdit" parent="heartRateInput" instance=ExtResource("2_4vqw8")]
+layout_mode = 2
+
+[node name="SubmitBtn" parent="." instance=ExtResource("4_4wrj3")]
+layout_mode = 2
+text = "Submit"
+
+[connection signal="text_changed" from="DateInp/dateLineEdit" to="." method="_on_date_line_edit_text_changed"]
+[connection signal="text_changed" from="timeInp/timeLineEdit" to="." method="_on_time_line_edit_text_changed"]
+[connection signal="text_changed" from="TopNumInput/sysEdit" to="." method="_on_sys_edit_text_changed"]
+[connection signal="text_changed" from="BtmNumInput2/diaEdit" to="." method="_on_dia_edit_text_changed"]
+[connection signal="text_changed" from="heartRateInput/hrEdit" to="." method="_on_hr_edit_text_changed"]

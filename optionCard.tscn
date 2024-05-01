@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://mok61vcgqgqw"]
+
+[ext_resource type="Script" path="res://optionCard.gd" id="1_johgu"]
+[ext_resource type="PackedScene" uid="uid://doq4x513ik654" path="res://mainLabel.tscn" id="2_hvcao"]
+[ext_resource type="PackedScene" uid="uid://co1djkx0newg" path="res://mainButton.tscn" id="4_u0i5c"]
+
+[node name="elementCard" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+script = ExtResource("1_johgu")
+
+[node name="LabelName" parent="." instance=ExtResource("2_hvcao")]
+custom_minimum_size = Vector2(215, 0)
+layout_mode = 2
+text = "Element"
+
+[node name="addOptionBtn" parent="." instance=ExtResource("4_u0i5c")]
+layout_mode = 2
+text = " + Add +"
+
+[node name="removeBtn" parent="." instance=ExtResource("4_u0i5c")]
+visible = false
+layout_mode = 2
+text = "Remove"
+
+[connection signal="pressed" from="addOptionBtn" to="." method="_on_add_option_btn_pressed"]
+[connection signal="pressed" from="removeBtn" to="." method="_on_remove_btn_pressed"]

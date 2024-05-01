@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://co1djkx0newg"]
+
+[ext_resource type="FontFile" uid="uid://ye5as43sq30l" path="res://IBMPlexMono-BoldItalic.ttf" id="1_eg504"]
+[ext_resource type="Script" path="res://mainButton.gd" id="2_w8d0m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1k3u5"]
+bg_color = Color(0.247059, 0.333333, 0.533333, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7qja"]
+bg_color = Color(0.27451, 0.529412, 0.247059, 1)
+
+[node name="Button" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("1_eg504")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_1k3u5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_p7qja")
+text = "Button"
+script = ExtResource("2_w8d0m")
