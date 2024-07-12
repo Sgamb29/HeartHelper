@@ -130,6 +130,10 @@ func _on_add_btn_pressed():
 		if x.one_to_add:
 			stats[x.stat] += 1
 			x.one_to_add = false
+			
+	if stats["Calories"] != 0:
+		Globals.stats_dict["currentCalories"] = stats["Calories"]
+		Globals.save_stats()
 
 	update_values(stats)
 	update_vars()
@@ -143,10 +147,23 @@ func _on_save_btn_pressed():
 
 
 func _on_reset_btn_pressed():
+	var keys = ["vegServings", "fruitServings", "grainsServings"]
+	for x in keys:
+		if len(Globals.stats_dict[x]) == 7:
+			Globals.stats_dict[x].pop_front()
+
+	Globals.stats_dict["vegServings"].append(stats["veggies"])
+	Globals.stats_dict["fruitServings"].append(stats["fruits"])
+	Globals.stats_dict["grainsServings"].append(stats["grains"])
+	Globals.stats_dict["currentCalories"] = 0
+	Globals.save_stats()
+	
 	for x in stats.keys():
 		stats[x] = 0
 	update_values(stats)
 	$"Base/marginBase/mainRows/footerCols/SaveBtn".text = "Save"
+	
+	
 
 
 func _on_button_info_pressed():
@@ -255,3 +272,7 @@ func _on_light_btn_pressed():
 	Globals.current_theme = "light"
 	Globals.save_theme()
 	get_tree().reload_current_scene()
+
+
+func _on_stats_page_btn_pressed():
+	get_tree().change_scene_to_file("res://statsScreen.tscn")

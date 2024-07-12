@@ -31,6 +31,9 @@ func _ready():
 	if theme_data:
 		current_theme = theme_data["theme"]
 		
+	
+	stats_dict = load_stats()
+		
 		
 		
 
@@ -74,4 +77,37 @@ func load_theme():
 	return data
 	
 
+
+var stats_dict = {
+	"vegServings" : [],
+	"fruitServings": [],
+	"grainsServings": [],
+	"weight": 0,
+	"startWeight": 0,
+	"calorieGoal": 0,
+	"currentCalories": 0,
+}
+
+func save_stats():
+	var save_file = FileAccess.open("user://savedstats.save", FileAccess.WRITE)
+	var json_string = JSON.stringify(stats_dict)
+	save_file.store_line(json_string)
+	
+func load_stats():
+	if not FileAccess.file_exists("user://savedstats.save"):
+		return {
+	"vegServings" : [],
+	"fruitServings": [],
+	"grainsServings": [],
+	"weight": 0,
+	"startWeight": 0,
+	"calorieGoal": 0,
+	"currentCalories": 0,
+}
+	
+	var save_file = FileAccess.open("user://savedstats.save", FileAccess.READ)
+	var json_string = save_file.get_as_text()
+	var data = JSON.parse_string(json_string)
+	
+	return data
 

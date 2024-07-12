@@ -1,0 +1,123 @@
+[gd_scene load_steps=6 format=3 uid="uid://crfq1241s1ldb"]
+
+[ext_resource type="PackedScene" uid="uid://doq4x513ik654" path="res://mainLabel.tscn" id="1_1l5ck"]
+[ext_resource type="Script" path="res://statsScreen.gd" id="1_yba52"]
+[ext_resource type="PackedScene" uid="uid://bivspu2x2b1fv" path="res://mainLine_edit.tscn" id="2_hmi2y"]
+[ext_resource type="PackedScene" uid="uid://co1djkx0newg" path="res://mainButton.tscn" id="3_k1g1e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdiim"]
+bg_color = Color(0.380392, 0.486275, 0.807843, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yba52")
+
+[node name="Base" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gdiim")
+
+[node name="marginBase" type="MarginContainer" parent="Base"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 70
+
+[node name="mainRows" type="VBoxContainer" parent="Base/marginBase"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Base/marginBase/mainRows"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Base/marginBase/mainRows/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="title" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("1_1l5ck")]
+layout_mode = 2
+text = "Stats Page"
+
+[node name="fruitTitleLbl" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("1_1l5ck")]
+layout_mode = 2
+text = "Fruit Servings Average
+Last 7 Days:"
+
+[node name="fruitAvgLbl" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("1_1l5ck")]
+layout_mode = 2
+text = "Average: 0 Servings"
+
+[node name="vegTitleLbl" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("1_1l5ck")]
+layout_mode = 2
+text = "Veggies Servings Average
+Last 7 Days:"
+
+[node name="vegAvgLbl" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("1_1l5ck")]
+layout_mode = 2
+text = "Average: 0 Servings
+"
+
+[node name="grainsTitleLbl" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("1_1l5ck")]
+layout_mode = 2
+text = "Grains Servings Average
+Last 7 Days:"
+
+[node name="grainsAvgLbl" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("1_1l5ck")]
+layout_mode = 2
+text = "Average: 0 Servings"
+
+[node name="calorieGoalbl" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("1_1l5ck")]
+layout_mode = 2
+text = "Calorie Goal: "
+
+[node name="caloriesLeftLbl" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("1_1l5ck")]
+layout_mode = 2
+text = "Calories Left:"
+
+[node name="calorieGoalInput" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("2_hmi2y")]
+layout_mode = 2
+placeholder_text = "Input Calorie Goal..."
+
+[node name="weightOutput" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("1_1l5ck")]
+layout_mode = 2
+text = "Current Weight: "
+
+[node name="weightChangeLbl" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("1_1l5ck")]
+layout_mode = 2
+text = "Change in Weight: "
+
+[node name="weightInput" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("2_hmi2y")]
+layout_mode = 2
+placeholder_text = "Input Weight..."
+max_length = 4
+
+[node name="tipLabel" parent="Base/marginBase/mainRows/ScrollContainer/VBoxContainer" instance=ExtResource("1_1l5ck")]
+layout_mode = 2
+text = "TIP: Input rst to reset start weight."
+
+[node name="homeBtn" parent="Base/marginBase/mainRows" instance=ExtResource("3_k1g1e")]
+layout_mode = 2
+text = "Home"
+
+[connection signal="text_submitted" from="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/calorieGoalInput" to="." method="_on_calorie_goal_input_text_submitted"]
+[connection signal="text_submitted" from="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/weightInput" to="." method="_on_weight_input_text_submitted"]
+[connection signal="pressed" from="Base/marginBase/mainRows/homeBtn" to="." method="_on_home_btn_pressed"]

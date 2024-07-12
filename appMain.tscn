@@ -93,20 +93,27 @@ text = "Customize Trackers"
 
 [node name="footerCols" type="HBoxContainer" parent="Base/marginBase/mainRows" index="5"]
 layout_mode = 2
-theme_override_constants/separation = 143
+theme_override_constants/separation = 10
 
 [node name="ResetBtn" parent="Base/marginBase/mainRows/footerCols" index="0" instance=ExtResource("3_wwv8u")]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Reset
 "
 
 [node name="GoToLogBtn" parent="Base/marginBase/mainRows/footerCols" index="1" instance=ExtResource("3_wwv8u")]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "BP-Log"
 
-[node name="SaveBtn" parent="Base/marginBase/mainRows/footerCols" index="2" instance=ExtResource("3_wwv8u")]
+[node name="statsPageBtn" parent="Base/marginBase/mainRows/footerCols" index="2" instance=ExtResource("3_wwv8u")]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
+text = "Stats"
+
+[node name="SaveBtn" parent="Base/marginBase/mainRows/footerCols" index="3" instance=ExtResource("3_wwv8u")]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Save
 "
 
@@ -122,6 +129,7 @@ text = "Save
 [connection signal="pressed" from="Base/marginBase/mainRows/OptionBtn" to="." method="_on_option_btn_pressed"]
 [connection signal="pressed" from="Base/marginBase/mainRows/footerCols/ResetBtn" to="." method="_on_reset_btn_pressed"]
 [connection signal="pressed" from="Base/marginBase/mainRows/footerCols/GoToLogBtn" to="." method="_on_go_to_log_btn_pressed"]
+[connection signal="pressed" from="Base/marginBase/mainRows/footerCols/statsPageBtn" to="." method="_on_stats_page_btn_pressed"]
 [connection signal="pressed" from="Base/marginBase/mainRows/footerCols/SaveBtn" to="." method="_on_save_btn_pressed"]
 
 [editable path="Base/marginBase/mainRows/ScrollContainer/VBoxContainer/sodiumCard"]
